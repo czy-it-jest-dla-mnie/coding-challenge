@@ -112,7 +112,7 @@ console.log ("Wsystkich dostęnych miejsc na parkingu jest" + sumaWszystkichMiej
 
 // zad 1.5: jaka jest srednia liczba miejsc parkingowych przy biedrze aldim i lidlu
 
-var sredniaLiczbaMiejscParkingowych = lidl.iloscMiejscParkingowych + aldi.iloscMiejscParkingowych + biedronka.iloscMiejscParkingowych/3;
+var sredniaLiczbaMiejscParkingowych = (lidl.iloscMiejscParkingowych + aldi.iloscMiejscParkingowych + biedronka.iloscMiejscParkingowych)/3;
 
 console.log ("Średnia liczba miejsc parkingowych wynosi" + " " + sredniaLiczbaMiejscParkingowych );
 
