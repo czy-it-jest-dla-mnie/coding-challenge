@@ -107,7 +107,14 @@ console.log("Lidl ma tyle samo miejsc aprkingowych co Aldi")}
 var sumaWszystkichMiejscPArkingowych = lidl.iloscMiejscParkingowych + aldi.iloscMiejscParkingowych + biedronka.iloscMiejscParkingowych;
 
 
+console.log ("Wsystkich dostęnych miejsc na parkingu jest" + sumaWszystkichMiejscPArkingowych);
+
+
 // zad 1.5: jaka jest srednia liczba miejsc parkingowych przy biedrze aldim i lidlu
+
+var sredniaLiczbaMiejscParkingowych = lidl.iloscMiejscParkingowych + aldi.iloscMiejscParkingowych + biedronka.iloscMiejscParkingowych/3;
+
+console.log ("Średnia liczba miejsc parkingowych wynosi" + " " + sredniaLiczbaMiejscParkingowych );
 
 // Dla trochę bardziej wtajemniczonych
 
