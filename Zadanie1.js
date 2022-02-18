@@ -23,4 +23,3 @@ console.log("wszystkie miejsca parkingowe", d);
 // zad 1.5: jaka jest srednia liczba miejsc parkingowych przy biedrze aldim i lidlu
 var e = d / sklepy.length;
 console.log("średnia ilość miejsc parkingowych:", e);
-console.log("ja");
