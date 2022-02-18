@@ -123,6 +123,4 @@ var sklepy = [lidl, biedronka, aldi];
 
 // zad 2.12: w którym sklepie można kupić najtańszy/najdroższy zestaw złożony z trzech róznych produktów
 
-export function rozwiazanieChallange1() {
-  console.log("umiesc rozwiazanie w tej funkcji");
-}
+console.log("umiesc rozwiazanie w tej funkcji");
