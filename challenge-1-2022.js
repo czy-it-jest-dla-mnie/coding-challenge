@@ -87,11 +87,25 @@ var sklepy = [lidl, biedronka, aldi];
 
 // zad 1.1: wypisz nazwy wszystkich sklepów
 
+console.log( lidl.nazwa, biedronka.nazwa, aldi.nazwa);
+
 // zad 1.2: wypisz ile produktów jest w każdym sklepie w formacie {nazwa sklepu}: {ilosc produktow}
 
 // zad 1.3: który sklep ma więcej miejsc parkingowych, lidl czy aldi
 
+
+if(lidl.iloscMiejscParkingowych > aldi.iloscMiejscParkingowych) {console.log("Lidl ma więcej miejsc parkingowych niż Aldi")}
+else if (lidl.iloscMiejscParkingowych < aldi.iloscMiejscParkingowych){ console.log ("Lidl ma mniej miejsc parkingowych niż Aldi")
+
+}
+else {
+console.log("Lidl ma tyle samo miejsc aprkingowych co Aldi")}
+
+
 // zad 1.4: ile jest wszystkich miejsc parkingowych w sumie przy biedrze, aldim i lidlu
+
+var sumaWszystkichMiejscPArkingowych = lidl.iloscMiejscParkingowych + aldi.iloscMiejscParkingowych + biedronka.iloscMiejscParkingowych;
+
 
 // zad 1.5: jaka jest srednia liczba miejsc parkingowych przy biedrze aldim i lidlu
 
