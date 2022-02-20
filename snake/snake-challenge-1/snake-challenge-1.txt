@@ -1,0 +1,13 @@
+Pierwsze wyzwanie snake'a:
+
+Zmień funkcję getNextFrame w pliku snake.js w taki sposób aby otrzymać ruchy tak jak na filmikach z folderu:
+1. kółeczką ciągle idzie w dól a po dojściu do końca mapy pojawia się znowu na samej górze (ball-down-movement.mov)
+2. kółeczko idzie w dół a potem odbija się w górę (ball-down-up-movement.mov)
+3. kółeczko robi trasę kształcie litery (ball-L-movement.mov)
+4. kółeczko robi trasę o trasie przypominającej spiralę zbudowaną z dwóch liter L (ball-spiral-movement.mov)
+5. kółeczko pokrywa całą mapę po torze przypominającym coraz mniejszą literę L (ball-full-map-movement.mov)
+
+
+Załozenia:
+1. algorytmy powinny działać dla dowolnego rozmiaru mapy
+2. algorytmy powinny tworzyc nieskończoną petlę
