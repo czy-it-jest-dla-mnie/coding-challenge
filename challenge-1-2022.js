@@ -120,32 +120,5 @@ console.log('średnia ilość miejsc parkingowych to', (lidl.iloscMiejscParkingo
 
 // ---------------------------------------------------
 
-// var sklepy = [lidl, biedronka, aldi];
 
-// Dla trochę bardziej wtajemniczonych
 
-// Założenia - operuj na kolekcji sklepy - twój kod powinien zadziałać także gdybyśmy dorzucili nagle więcej sklepów
-
-// zad 2.1: wypisz wszystkie produkty w formacie: {sklep}:{produkt}:{cena}
-
-// zad 2.2: wypisz nazwy wszystkich produktów, tak, żeby każda nazwa wystąpiła maksymalnie tylko 1 raz
-
-// zad 2.3: wypisz nazwy wszystkich produktów w porządku alfabetycznym
-
-// zad 2.4: w którym sklepie jest najtańsze masło
-
-// zad 2.5: w który sklepie jest najdroższe masło
-
-// zad 2.6: w którym sklepie jest najtańsza podwawelska
-
-// zad 2.7: w którym sklepie jest najtańszy produkt
-
-// zad 2.8: w którym sklepie jest najdroższy produkt
-
-// zad 2.9: ile wynosi średnia cen produktów w każdym sklepie
-
-// zad 2.10: wypisz sklepy od najtańszego do najdroższego (uwzględniajać średnią cenę produktów)
-
-// zad 2.11: w którym sklepie można kupić najtańszy/najdroższy zestaw złożony z dwóch różnych produktów
-
-// zad 2.12: w którym sklepie można kupić najtańszy/najdroższy zestaw złożony z trzech róznych produktów
