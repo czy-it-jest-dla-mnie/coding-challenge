@@ -1,7 +1,7 @@
 Pierwsze wyzwanie snake'a:
 
 Zmień funkcję getNextFrame w pliku snake.js w taki sposób aby otrzymać ruchy tak jak na filmikach z folderu:
-1. kółeczką ciągle idzie w dól a po dojściu do końca mapy pojawia się znowu na samej górze (ball-down-movement.mov)
+1. kółeczko ciągle idzie w dól a po dojściu do końca mapy pojawia się znowu na samej górze (ball-down-movement.mov)
 2. kółeczko idzie w dół a potem odbija się w górę (ball-down-up-movement.mov)
 3. kółeczko robi trasę kształcie litery (ball-L-movement.mov)
 4. kółeczko robi trasę o trasie przypominającej spiralę zbudowaną z dwóch liter L (ball-spiral-movement.mov)
