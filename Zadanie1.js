@@ -11,7 +11,7 @@ console.log(aldi.nazwa + ": " + aldi.produkty.length);
 if(lidl.iloscMiejscParkingowych > aldi.iloscMiejscParkingowych) {
  console.log("lidl ma więcej miejsc parkingowych");
 } else if(lidl.iloscMiejscParkingowych == aldi.iloscMiejscParkingowych) {
- console.log("lidl i aldi mają tyle samo miejsc parkingowych")
+ console.log("lidl i aldi mają tyle samo miejsc parkingowych");
 } else {
  console.log("aldi ma więcej miejsc parkingowych");
 }
@@ -25,5 +25,5 @@ console.log("wszystkie miejsca parkingowe" + ": " + wszystkieMiejsca);
 
 // zad 1.5: jaka jest srednia liczba miejsc parkingowych przy biedrze aldim i lidlu
 var sredniaMiejsc = wszystkieMiejsca / sklepy.length;
-console.log("średnia ilość miejsc parkingowych:" + ": " + sredniaMiejsc);
+console.log("średnia ilość miejsc parkingowych" + ": " + sredniaMiejsc);
 
