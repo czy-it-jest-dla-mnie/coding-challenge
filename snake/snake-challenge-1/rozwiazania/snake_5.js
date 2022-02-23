@@ -69,6 +69,7 @@ function getNextFrame(mapSize, frameIndex) {
         if(newX < mapMinX) {
             mapMinX = mapMinX + 1;
             ball.direction = "up";
+            ball.y = ball.y - 1;
         } else {
             ball.x = newX;
         }
