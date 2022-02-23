@@ -86,6 +86,7 @@ var sklepy = [lidl, biedronka, aldi];
 // Założenia - operuj na zmiennych lidl, biedronka i aldi
 
 // zad 1.1: wypisz nazwy wszystkich sklepów
+console.log("test");
 
 // zad 1.2: wypisz ile produktów jest w każdym sklepie w formacie {nazwa sklepu}: {ilosc produktow}
 
