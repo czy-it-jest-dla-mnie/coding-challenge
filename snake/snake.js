@@ -17,7 +17,7 @@ function getNextFrame(mapSize, frameIndex) {
         var newY = ball.y + 1;
 
         if(newY >= mapSize) {
-            ball.direction = "right";
+            ball.y = 0;
         } else {
             ball.y = newY;
         }
