@@ -6,56 +6,56 @@ window.onload = () => createSnakeEngine(
     getNextFrame);
 
 
-var ball = {
+var snake = {
     x: 0,
     y: 0,
     direction: "down"
 }
 
 function getNextFrame(mapSize, frameIndex) {
-    if(ball.direction == "down") {
-        var newY = ball.y + 1;
+    if(snake.direction == "down") {
+        var newY = snake.y + 1;
 
         if(newY >= mapSize) {
-            ball.direction = "right";
+            snake.direction = "right";
         } else {
-            ball.y = newY;
+            snake.y = newY;
         }
     }
 
-    if(ball.direction == "right") {
-        var newX = ball.x + 1;
+    if(snake.direction == "right") {
+        var newX = snake.x + 1;
 
         if(newX >= mapSize) {
-            ball.direction = "up";
+            snake.direction = "up";
         } else {
-            ball.x = newX;
+            snake.x = newX;
         }
     }
 
-    if(ball.direction == "up") {
-        var newY = ball.y - 1;
+    if(snake.direction == "up") {
+        var newY = snake.y - 1;
 
         if(newY < 0) {
-            ball.direction = "left";
+            snake.direction = "left";
         } else {
-            ball.y = newY;
+            snake.y = newY;
         }
     }
 
-    if(ball.direction == "left") {
-        var newX = ball.x - 1;
+    if(snake.direction == "left") {
+        var newX = snake.x - 1;
 
         if(newX < 0) {
-            ball.direction = "down";
+            snake.direction = "down";
         } else {
-            ball.x = newX;
+            snake.x = newX;
         }
     }
 
     return [{
-        x: ball.x,
-        y: ball.y
+        x: snake.x,
+        y: snake.y
     }];
 }
 
