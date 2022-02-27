@@ -1,0 +1,12 @@
+Drugie wyzwanie snake'a:
+
+Zmień funkcję getSnakeCoordinates w pliku snake.js w taki sposób aby niebieska kulka 'zjadała' czerwone.
+Funkcja getSnakeCoordinates w argumentach dostaje tablicę foodCoordinates ([{x: ?, y: ?}, ...]).
+
+Silnik gry został rozszerzony o kolejne funkcje. Gdy niebieska kulka wejdzie na czerwoną kulkę, czerwona kulka zostaje
+skasowana, nowa czerwona kulka zostaje wygenerowana, a licznik jedzenia jest zwiększany. 
+
+
+Załozenia:
+1. algorytmy powinny działać dla dowolnego rozmiaru mapy
+2. algorytmy powinny tworzyc nieskończoną pętlę
