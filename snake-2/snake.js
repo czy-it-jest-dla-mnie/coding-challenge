@@ -14,7 +14,12 @@ var snake = {
     direction: "down"
 }
 
+
 function getSnakeCoordinates(mapSize, foodCoordinates) {
+   
+    let closestFoodIndices = findClosestFood(snake, foodCoordinates);
+    newHeading(snake, closestFoodIndices);
+
     if(snake.direction == "down") {
         var newY = snake.y + 1;
 
@@ -59,6 +64,41 @@ function getSnakeCoordinates(mapSize, foodCoordinates) {
         x: snake.x,
         y: snake.y
     }];
+
+}
+
+function findClosestFood(snake, foodCoordinates) {
+
+    let squaredDiff = []; //tablica kwadratow odleglosci miedzy niebieska, a czerwona kulka
+
+    for (let index = 0; index < foodCoordinates.length; index++) {
+        squaredDiff[index] = (snake.x - foodCoordinates[index].x)**2 + (snake.y - foodCoordinates[index].y)**2;
+    }
+
+    let minSquaredDiff = Math.min.apply(Math, squaredDiff);
+    let indexMinSquaredDiff = squaredDiff.indexOf(minSquaredDiff);
+
+    return [foodCoordinates[indexMinSquaredDiff].x, foodCoordinates[indexMinSquaredDiff].y];
+
+}
+
+function newHeading(snake, closestFood) {
+
+    if (snake.x < closestFood[0]) {
+        snake.direction = "right";
+    }
+
+    if (snake.x > closestFood[0]) {
+        snake.direction = "left";
+    }
+
+    if (snake.y > closestFood[1]) {
+        snake.direction = "up";
+    }
+
+    if (snake.y < closestFood[1]) {
+        snake.direction = "down";
+    }
 }
 
 function createSnakeEngine(canvasId, foodCounterId, mapSize, refreshInterval, foodCount, getSnakeCoordinates) {
