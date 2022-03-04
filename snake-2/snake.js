@@ -17,47 +17,23 @@ var snake = {
 
 function getSnakeCoordinates(mapSize, foodCoordinates) {
    
-    let closestFoodIndices = findClosestFood(snake, foodCoordinates);
-    newHeading(snake, closestFoodIndices);
+    let closestFoodCoordinates = findClosestFood(snake, foodCoordinates);
+    snake.direction = newHeading(snake, closestFoodCoordinates);
 
     if(snake.direction == "down") {
-        var newY = snake.y + 1;
-
-        if(newY >= mapSize) {
-            snake.direction = "right";
-        } else {
-            snake.y = newY;
-        }
+        snake.y = snake.y + 1;
     }
 
     if(snake.direction == "right") {
-        var newX = snake.x + 1;
-
-        if(newX >= mapSize) {
-            snake.direction = "up";
-        } else {
-            snake.x = newX;
-        }
+        snake.x = snake.x + 1;
     }
 
     if(snake.direction == "up") {
-        var newY = snake.y - 1;
-
-        if(newY < 0) {
-            snake.direction = "left";
-        } else {
-            snake.y = newY;
-        }
+        snake.y = snake.y - 1;
     }
 
     if(snake.direction == "left") {
-        var newX = snake.x - 1;
-
-        if(newX < 0) {
-            snake.direction = "down";
-        } else {
-            snake.x = newX;
-        }
+        snake.x = snake.x - 1;
     }
 
     return [{
@@ -77,27 +53,30 @@ function findClosestFood(snake, foodCoordinates) {
 
     let minSquaredDiff = Math.min.apply(Math, squaredDiff);
     let indexMinSquaredDiff = squaredDiff.indexOf(minSquaredDiff);
+    const closestCoordinates = foodCoordinates[indexMinSquaredDiff];
 
-    return [foodCoordinates[indexMinSquaredDiff].x, foodCoordinates[indexMinSquaredDiff].y];
-
+    return {
+        x: closestCoordinates.x,
+        y: closestCoordinates.y
+    }
 }
 
 function newHeading(snake, closestFood) {
 
-    if (snake.x < closestFood[0]) {
-        snake.direction = "right";
+    if (snake.x < closestFood.x) {
+        return "right";
     }
 
-    if (snake.x > closestFood[0]) {
-        snake.direction = "left";
+    if (snake.x > closestFood.x) {
+        return "left";
     }
 
-    if (snake.y > closestFood[1]) {
-        snake.direction = "up";
+    if (snake.y > closestFood.y) {
+        return "up";
     }
 
-    if (snake.y < closestFood[1]) {
-        snake.direction = "down";
+    if (snake.y < closestFood.y) {
+        return "down";
     }
 }
 
