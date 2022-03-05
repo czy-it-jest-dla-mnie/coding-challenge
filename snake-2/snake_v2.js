@@ -98,7 +98,7 @@ function createSnakeEngine(canvasId, foodCounterId, mapSize, refreshInterval, fo
 
         eatenFoodCounter += eatFood(mapSize, snakeCoordinates, foodMap);
 
-        while (searchClosestFood) {
+        if (searchClosestFood) {
             closestFoodCoordinates = findClosestFood(foodMap.getFoodCoordinates());
             searchClosestFood = false;
         }
