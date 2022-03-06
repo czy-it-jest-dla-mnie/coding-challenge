@@ -4,6 +4,10 @@ let snakeEngine;
 
 let snake = createSnake();
 
+var wholeSnake = [];
+
+var searchClosestFood = false;
+
 window.onload = () => {
     snakeEngine = createSnakeEngine(
         "snakeCanvas", 
@@ -33,51 +37,69 @@ window.onload = () => {
 }
 
 
-function getSnakeCoordinates(mapSize, foodCoordinates, eatenFoodCounter) {
-    if(snake.direction == "down") {
-        var newY = snake.y + 1;
+function getSnakeCoordinates(mapSize, foodCoordinates, closestFoodCoordinates, eatenFoodCounter) {
+    
+    snake.direction = newHeading(closestFoodCoordinates);
 
-        if(newY >= mapSize) {
-            snake.direction = "right";
-        } else {
-            snake.y = newY;
-        }
+    if(snake.direction == "down") {
+        snake.y = snake.y + 1;
     }
 
     if(snake.direction == "right") {
-        var newX = snake.x + 1;
-
-        if(newX >= mapSize) {
-            snake.direction = "up";
-        } else {
-            snake.x = newX;
-        }
+        snake.x = snake.x + 1;
     }
 
     if(snake.direction == "up") {
-        var newY = snake.y - 1;
-
-        if(newY < 0) {
-            snake.direction = "left";
-        } else {
-            snake.y = newY;
-        }
+        snake.y = snake.y - 1;
     }
 
     if(snake.direction == "left") {
-        var newX = snake.x - 1;
-
-        if(newX < 0) {
-            snake.direction = "down";
-        } else {
-            snake.x = newX;
-        }
+        snake.x = snake.x - 1;
     }
 
-    return [{
-        x: snake.x,
-        y: snake.y
-    }];
+    let snakeCoordinates = {x: snake.x, y: snake.y};
+    
+    wholeSnake.unshift(snakeCoordinates);
+    wholeSnake.length = eatenFoodCounter + 1;
+
+    return wholeSnake;
+}
+
+function findClosestFood(foodCoordinates) {
+
+    let squaredDiff = []; //tablica kwadratow odleglosci miedzy niebieska, a czerwona kulka
+
+    for (let index = 0; index < foodCoordinates.length; index++) {
+        squaredDiff[index] = (snake.x - foodCoordinates[index].x)**2 + (snake.y - foodCoordinates[index].y)**2;
+    }
+
+    let minSquaredDiff = Math.min.apply(Math, squaredDiff);
+    let indexMinSquaredDiff = squaredDiff.indexOf(minSquaredDiff);
+    const closestCoordinates = foodCoordinates[indexMinSquaredDiff];
+
+    return {
+        x: closestCoordinates.x,
+        y: closestCoordinates.y
+    }
+}
+
+function newHeading(closestFood) {
+
+    if (snake.x < closestFood.x) {
+        return "right";
+    }
+
+    if (snake.x > closestFood.x) {
+        return "left";
+    }
+
+    if (snake.y > closestFood.y) {
+        return "up";
+    }
+
+    if (snake.y < closestFood.y) {
+        return "down";
+    }
 }
 
 function createSnake() {
@@ -96,6 +118,7 @@ function createSnakeEngine(canvasId, foodCounterId, mapSize, refreshInterval, fo
     let foodMap = generateFoodMap(mapSize, foodCount);
     
     let eatenFoodCounter = 0;
+    let closestFoodCoordinates = findClosestFood(foodMap.getFoodCoordinates());
 
     const interval = setInterval(() => {
         clearCanvas(ctx, xMaxPx, yMaxPx)
@@ -104,9 +127,15 @@ function createSnakeEngine(canvasId, foodCounterId, mapSize, refreshInterval, fo
         const snakeCoordinates = getSnakeCoordinates(
             mapSize, 
             foodMap.getFoodCoordinates(),
+            closestFoodCoordinates,
             eatenFoodCounter);
 
         eatenFoodCounter += eatFood(mapSize, snakeCoordinates, foodMap);
+
+        if (searchClosestFood) {
+            closestFoodCoordinates = findClosestFood(foodMap.getFoodCoordinates());
+            searchClosestFood = false;
+        }
 
         drawFood(ctx, xMaxPx, yMaxPx, foodMap, mapSize);
         drawSnake(ctx, xMaxPx, yMaxPx, snakeCoordinates, mapSize);
@@ -330,6 +359,7 @@ function eatFood(mapSize, snakeCoordinates, foodMap) {
             foodMap.deleteFoodAt(coordinates);
             foodMap.randomizeNewFood(mapSize);
             howManyFoodEaten ++;
+            searchClosestFood = true;
         }
     });
 
