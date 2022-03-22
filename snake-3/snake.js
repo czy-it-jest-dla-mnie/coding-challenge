@@ -4,8 +4,6 @@ let snakeEngine;
 
 let snake = createSnake();
 
-var wholeSnake = [];
-
 var searchClosestFood = false;
 
 window.onload = () => {
@@ -39,30 +37,31 @@ window.onload = () => {
 
 function getSnakeCoordinates(mapSize, foodCoordinates, closestFoodCoordinates, eatenFoodCounter) {
     
-    snake.direction = newHeading(closestFoodCoordinates);
+    snake.direction = getNewDirection(closestFoodCoordinates);
 
     if(snake.direction == "down") {
-        snake.y = snake.y + 1;
+        snake.head.y = snake.head.y + 1;
     }
 
     if(snake.direction == "right") {
-        snake.x = snake.x + 1;
+        snake.head.x = snake.head.x + 1;
     }
 
     if(snake.direction == "up") {
-        snake.y = snake.y - 1;
+        snake.head.y = snake.head.y - 1;
     }
 
     if(snake.direction == "left") {
-        snake.x = snake.x - 1;
+        snake.head.x = snake.head.x - 1;
     }
 
-    let snakeCoordinates = {x: snake.x, y: snake.y};
-    
-    wholeSnake.unshift(snakeCoordinates);
-    wholeSnake.length = eatenFoodCounter + 1;
+    return getSnakeBody(eatenFoodCounter);
+}
 
-    return wholeSnake;
+function getSnakeBody (eatenFoodCounter) {
+    snake.body.splice(eatenFoodCounter);
+    snake.body.unshift({x: snake.head.x, y: snake.head.y});
+    return snake.body;
 }
 
 function findClosestFood(foodCoordinates) {
@@ -70,7 +69,7 @@ function findClosestFood(foodCoordinates) {
     let squaredDiff = []; //tablica kwadratow odleglosci miedzy niebieska, a czerwona kulka
 
     for (let index = 0; index < foodCoordinates.length; index++) {
-        squaredDiff[index] = (snake.x - foodCoordinates[index].x)**2 + (snake.y - foodCoordinates[index].y)**2;
+        squaredDiff[index] = (snake.head.x - foodCoordinates[index].x)**2 + (snake.head.y - foodCoordinates[index].y)**2;
     }
 
     let minSquaredDiff = Math.min.apply(Math, squaredDiff);
@@ -83,30 +82,30 @@ function findClosestFood(foodCoordinates) {
     }
 }
 
-function newHeading(closestFood) {
+function getNewDirection(closestFood) {
 
-    if (snake.x < closestFood.x) {
+    if (snake.head.x < closestFood.x) {
         return "right";
     }
 
-    if (snake.x > closestFood.x) {
+    if (snake.head.x > closestFood.x) {
         return "left";
     }
 
-    if (snake.y > closestFood.y) {
+    if (snake.head.y > closestFood.y) {
         return "up";
     }
 
-    if (snake.y < closestFood.y) {
+    if (snake.head.y < closestFood.y) {
         return "down";
     }
 }
 
 function createSnake() {
     return {
-        x: 0,
-        y: 0,
-        direction: "down"
+        head: {x: 0, y: 0},
+        body: [],
+        direction: "down",
     };
 }
 
@@ -318,11 +317,11 @@ function lightenColor(colorCode, amount) {
 
 function getTile(coordinates, mapSize, xMaxPx, yMaxPx) {
     if(coordinates.x >= mapSize || coordinates.x < 0) {
-        throw `X cooridnate (${coordinates.x}) is outside of the map (${mapSize} x ${mapSize})`;
+        throw `X coordinate (${coordinates.x}) is outside of the map (${mapSize} x ${mapSize})`;
     }
 
     if(coordinates.y >= mapSize || coordinates.y < 0) {
-        throw `Y cooridnate (${coordinates.y}) is outside of the map (${mapSize} x ${mapSize})`;
+        throw `Y coordinate (${coordinates.y}) is outside of the map (${mapSize} x ${mapSize})`;
     }
 
     const tileWidthPx = xMaxPx/mapSize;
