@@ -1,0 +1,20 @@
+Trzecie wyzwanie snake'a:
+
+Zmień funkcję getSnakeCoordinates w pliku snake.js w taki sposób aby niebieska kulka 'zjadała' czerwone
+i po kazdej zjedzonej kulce 'wyrastał' jej dodatkowy segment ogona.
+
+Funkcja getSnakeCoordinates w argumentach dostaje tablicę foodCoordinates ([{x: ?, y: ?}, ...]) oraz 
+licznik 'zjedzonych' czerwonych kulek.
+
+Zeby narysowac 'węza' wystarczy zwrócić z funkcji getSnakeCoordinates tablice współrzędnych, na przykład:
+
+return [{x: 0, y: 0}, {x: 1, y:0}]
+
+Powyzszy przykład narysuje na ekranie węza zbudowanego z dwóch segmentow.
+
+Całość powinna się zachowywać tak jak na filmiku 'blue-ball-eats-red-balls-and-grow.mov'
+
+
+Załozenia:
+1. algorytmy powinny działać dla dowolnego rozmiaru mapy
+2. algorytmy powinny tworzyc nieskończoną pętlę
