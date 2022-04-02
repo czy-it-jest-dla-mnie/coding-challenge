@@ -87,6 +87,9 @@ var sklepy = [lidl, biedronka, aldi];
 
 // zad 1.1: wypisz nazwy wszystkich sklepów
 
+var test = 1;
+console.log(test);
+
 // zad 1.2: wypisz ile produktów jest w każdym sklepie w formacie {nazwa sklepu}: {ilosc produktow}
 
 // zad 1.3: który sklep ma więcej miejsc parkingowych, lidl czy aldi
